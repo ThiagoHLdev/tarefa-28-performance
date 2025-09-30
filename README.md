@@ -1,62 +1,23 @@
-# Tarefa 28 - Testes de Performance
+# Tarefa 28 – Testes de Performance
 
-Este projeto contém testes de performance para a API EBAC Demo Store.
+Este repositório contém os testes de performance realizados com as ferramentas **K6** e **Apache JMeter**.
 
-## Endpoints Testados
-- **Produtos:** `/produtos`
-- **Clientes:** `/clientes`
+## 📂 Estrutura
+- **k6/** → scripts em JavaScript para execução de testes de carga com K6.
+- **jmeter/** → planos de teste em formato `.jmx` para execução no Apache JMeter.
 
-## Ferramentas utilizadas
-- [Apache JMeter](https://jmeter.apache.org/)
-- Node.js (para rodar a API localmente)
+## ▶️ Como rodar os testes
 
-## Como executar
-
-### 1. Clonar este repositório
+### K6
 ```bash
-git clone https://github.com/ThiagoHLdev/tarefa-28-performance.git
-cd tarefa-28-performance
+cd k6
+k6 run script-test.js
 ```
 
-### 2. Subir a API localmente
-Clone o servidor e rode localmente:
+### JMeter
+1. Abra o JMeter.
+2. Clique em **File > Open** e selecione o arquivo `teste-performance.jmx`.
+3. Execute o teste no menu **Run > Start**.
 
-```bash
-git clone https://github.com/EBAC-QE/ebac-demo-store-server.git
-cd ebac-demo-store-server
-npm install
-npm start
-```
-
-A API estará disponível em `http://localhost:3000`.
-
-### 3. Executar os testes
-```bash
-# Teste de produtos
-jmeter -n -t testes/produtos.jmx -l resultados/produtos.csv -e -o resultados/produtos
-
-# Teste de clientes
-jmeter -n -t testes/clientes.jmx -l resultados/clientes.csv -e -o resultados/clientes
-```
-
-Os relatórios HTML estarão disponíveis em:
-- `resultados/produtos/index.html`
-- `resultados/clientes/index.html`
-
-## Configurações dos testes
-- **Usuários virtuais (threads):** 10
-- **Ramp-up:** 5 segundos
-- **Requisições por usuário:** 20
-
-## Estrutura do projeto
-```
-tarefa-28-performance
-│
-├── README.md
-├── testes
-│   ├── produtos.jmx
-│   └── clientes.jmx
-└── resultados
-    ├── produtos.html
-    └── clientes.html
-```
+---
+> Autor: Thiago Henrique Leite
